@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--bootstrap link-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!--css styles-->
+    <link rel="stylesheet" href="styles.css">
+    <title>Instagram Photo Feed</title>
+</head>
+<body>
+    <div class="container-fluid">
+      <!--nav bar-->
+      <div class="row">
+        <div class="col">
+          <nav class="navbar navbar-expand-lg navbar-light bg-light p-4">      
+              <!--Instagram logo and title-->
+              <a class="navbar-brand" href="#">
+                <img src="https://cdn-icons-png.flaticon.com/512/87/87390.png" alt="" width="30" height="28" class="d-inline-block align-text-top">
+                Instagram
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPostAndSettings" aria-controls="navbarPostAndSettings" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <!--Create a new post modal and drop down settings-->
+              <div class="collapse navbar-collapse justify-content-end" id="navbarPostAndSettings">
+                <ul class="navbar-nav ms-auto me-4">
+                  <li class="nav-item me-4">
+                      <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createPost">
+                          Create a new post
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="createPost" tabindex="-1" aria-labelledby="createPost" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="createPost">Create a new post</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                <div class="mb-3">
+                                  <label for="caption" class="form-label">Caption</label>
+                                  <textarea class="form-control" id="caption" rows="3" placeholder="Add the caption of your post here"></textarea>
+                                </div>
+                                <button type="button" class="btn btn-light">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-fill" viewBox="0 0 16 16">
+                                    <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                    <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z"/>
+                                  </svg>
+                                </button>
+                                <button type="button" class="btn btn-light">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                  </svg>
+                                </button>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success">Publish</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                  </li>
+                  <li class="nav-item">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <!--settings cog icon-->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+                          <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                        </svg>
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-lg-end">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Accessibility</a></li>
+                        <li><a class="dropdown-item" href="#">Privacy and Data</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="#">Log out</a></li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+          </nav>    
+            
+        </div>
+      </div>
+      <!--alternate page thing using nav-->
+      <div class="row">
+        <ul class="nav nav-tabs justify-content-center mb-3">
+          <!--Grid photo feed tab-->
+          <li class="nav-item">
+            <a class="nav-link active" data-bs-toggle="tab" href="#grid-feed">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-3x3" viewBox="0 0 16 16">
+                <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5V5h4V1H1.5zM5 6H1v4h4V6zm1 4h4V6H6v4zm-1 1H1v3.5a.5.5 0 0 0 .5.5H5v-4zm1 0v4h4v-4H6zm5 0v4h3.5a.5.5 0 0 0 .5-.5V11h-4zm0-1h4V6h-4v4zm0-5h4V1.5a.5.5 0 0 0-.5-.5H11v4zm-1 0V1H6v4h4z"/>
+              </svg>
+            </a>
+            
+          </li>
+          <!--single photo feed tab-->
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" href="#single-post-feed">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill" viewBox="0 0 16 16">
+                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"/>
+              </svg>
+            </a>
+          </li>
+      </div>
+    </div>
+
+    <!--tab contents-->
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="grid-feed">
+        <div class="container">
+              <div class="row">
+                <div class="col col-lg-4">
+                  <img src="https://images.unsplash.com/photo-1508515053963-70c7cc39dfb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80">
+                </div>
+                <div class="col col-lg-4">
+                  <img src="https://images.unsplash.com/photo-1508515053963-70c7cc39dfb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80">
+                </div>
+                <div class="col col-lg-4">
+                  <img src="https://images.unsplash.com/photo-1508515053963-70c7cc39dfb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <img class="img-fluid" src="https://images.unsplash.com/photo-1621342261924-3e2f6c9603f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80">
+                </div>
+                <div class="col-lg-4">
+                  <img class="img-fluid" src="https://images.unsplash.com/photo-1621342261924-3e2f6c9603f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80">
+                </div>
+                <div class="col-lg-4">
+                  <img class="img-fluid"  src="https://images.unsplash.com/photo-1621342261924-3e2f6c9603f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <img class="img-fluid" src="https://images.unsplash.com/photo-1532959604812-c2909578fae3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80">
+                </div>
+                <div class="col-lg-4">
+                  <img class="img-fluid" src="https://images.unsplash.com/photo-1532959604812-c2909578fae3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80">
+                </div>
+                <div class="col-lg-4">
+                  <img class="img-fluid" src="https://images.unsplash.com/photo-1532959604812-c2909578fae3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80">
+                </div>
+              </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="single-post-feed">
+        <div class="card mx-auto m-3" style="width: 40rem;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="container-fluid p-0 d-flex">
+                <span class="h4">Caption for photo</span> 
+                <span class="text-end ms-auto">08/26</span>
+              </div>
+              
+            </li>
+            <li class="list-group-item p-0">
+              <img class="img-fluid card-img-top" src="https://images.unsplash.com/photo-1508515053963-70c7cc39dfb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80">
+            </li>
+            <li class="list-group-item">
+              <span class="h6">204 Likes</span>
+              <p>description here</p>
+            </li>
+          </ul>
+        </div>
+        <div class="card mx-auto m-3" style="width: 40rem;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="container-fluid p-0 d-flex">
+                <span class="h4">Caption for photo</span> 
+                <span class="text-end ms-auto">08/26</span>
+              </div>
+              
+            </li>
+            <li class="list-group-item p-0">
+              <img class="img-fluid card-img-top" src="https://images.unsplash.com/photo-1508515053963-70c7cc39dfb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80">
+            </li>
+            <li class="list-group-item">
+              <span class="h6">204 Likes</span>
+              <p>description here</p></li>
+          </ul>
+        </div>
+        <div class="card mx-auto m-3" style="width: 40rem;">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <div class="container-fluid p-0 d-flex">
+                <span class="h4">Caption for photo</span> 
+                <span class="text-end ms-auto">08/26</span>
+              </div>
+              
+            </li>
+            <li class="list-group-item p-0">
+              <img class="img-fluid card-img-top" src="https://images.unsplash.com/photo-1508515053963-70c7cc39dfb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80">
+            </li>
+            <li class="list-group-item">
+              <span class="h6">204 Likes</span>
+              <p>description here</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+   
+    
+</body>
+</html>

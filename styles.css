@@ -31,7 +31,8 @@ div.tab-content .col {
 
 div.tab-content div.col-lg-4 img {
     width: 100%;
-    height: 100%;
+    height: 400px;
     object-fit: cover;
+    object-position: center;
 }
 
